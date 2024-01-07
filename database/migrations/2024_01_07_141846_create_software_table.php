@@ -18,12 +18,12 @@ return new class extends Migration
             $table->string('name');
             $table->string('system_operative');
             $table->integer('stock');
-            $table->char('stauts', 1);
+            $table->char('status', 1);
             $table->string('license', 100)->unique();
             $table->string('sku', 100)->unique();
             $table->float('price');
-            $table->string('created_by');
-            $table->string('updated_by');
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
             $table->timestamps();
         });
     }
