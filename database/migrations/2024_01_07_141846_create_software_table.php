@@ -13,10 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('software', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('token');
+            $table->string('system_operative');
+            $table->integer('stock');
+            $table->char('status', 1);
+            $table->string('license', 100)->unique();
+            $table->string('sku', 100)->unique();
+            $table->float('price');
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('software');
     }
 };
