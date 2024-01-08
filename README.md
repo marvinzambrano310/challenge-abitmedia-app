@@ -23,14 +23,17 @@ Composer: Herramienta para intsalar las dependiencias o liberias del proyecto qu
 1. Generar una copia del archivo que se encuentra en la parte principal del proyecto de nombre **.env.example** y a la copia renombrarla/cambiar de nombre a **.env**, con la finalidad de generar el archivo de variables de entrono necesarios para poner en funcionamiento el proyecto.
 2. Ejecutar el comando **php artisan migrate**, con el proposito de que el sistema genere la base de datos y cree las tablas necesarias dentro del Gestor de Base de Datos que es Mysql.
 3. Ejecutar el comando **php artisan db:seed** para que el proyecto genere una semilla de datos en las tablas de la base de datos, la informacion que carge en la base de datos debes ser igual a la que se detalla a continuacion:
+   
 *Software*
  - Antivirus ($5 para Windows, $7 para Mac), en existencia 10 para cada S.O. respectivamente.
  - Ofimática ($10 para Windows, $12 para Mac), en existencia 20 para cada S.O. respectivamente.
  - Editor de video ($20 para Windows, $22 para Mac), en existencia 30 para cada S.O. respectivamente.
+
 *Servicios*
  - Formateo de computadores ($25)
  - Mantenimiento ($30)
  - Hora de soporte en software ($50)
+
 La informacion va a ir almacenada segun la tabla en la que corresponda.
 4. Ejecutar el comando **php artisan optimize** para limpiar la cache, reiniciar rutas y actualizar nuevos cambios de rutas dentro del proyecto. 
 5. Para inciar el servidor de forma local ejcutar el comando **php artisan serve**. El sistema se abrira en la sigueinte direccion: *htpp://localhost:8000*.
@@ -40,13 +43,19 @@ La informacion va a ir almacenada segun la tabla en la que corresponda.
 # Generar Token - Autenticacion
 
 - **Generar Token** - http://localhost:8000/api/generate/token (POST)
+  
     *Headers* - No Aplica
+  
     *Parametros* - No Aplica
+  
     *Datos* - Formato de Tipo JSON, utilizar la siguiente estructura.
+  
         {
             "name": "Marvin"
         }
+  
     *Respuesta* - Formato de Tipo JSON, sistema Devuelve la sigueinte estructura.
+  
         {
             "name": "Marvin",
             "token": "1SJYk8sUhd",
@@ -57,13 +66,19 @@ La informacion va a ir almacenada segun la tabla en la que corresponda.
 
 # CRUD A SERVICIOS
 - **Listar Servicios** - http://localhost:8000/api/services (GET)
-    *Headers* - Usar el Token Generado en el Api Generar Token\
+  
+    *Headers* - Usar el Token Generado en el Api Generar Token
+  
         {
             "Authorization": (*token*) 
         }
+  
     *Parametros* - No Aplica
+  
     *Datos* - No Aplica
+  
     *Respuesta* - Formato de Tipo JSON, sistema Devuelve la sigueinte estructura.
+  
         [
             {
                 "id": 1,
@@ -90,17 +105,22 @@ La informacion va a ir almacenada segun la tabla en la que corresponda.
         ]
 
 - **Crear Servicio** - http://localhost:8000/api/services (POST)
-    *Headers* - Usar el Token Generado en el Api Generar Token\
+    *Headers* - Usar el Token Generado en el Api Generar Token
+  
         {
             "Authorization": (*token*) 
         }
+    
     *Parametros* - No Aplica
+  
     *Datos* - Formato de Tipo JSON, utilizar la siguiente estructura. Todos los campos son Obligatorios
+  
         {
             "name": "Mantemiento de Equipos",
             "sku" : "abcdefghij",
             "price": 25.00
         }
+  
     *Respuesta* - Formato de Tipo JSON, sistema Devuelve la sigueinte estructura.
         {
             "name": "Mantemiento de Equipos",
@@ -114,14 +134,21 @@ La informacion va a ir almacenada segun la tabla en la que corresponda.
         }
 
 - **Visualizar Servicio** - http://localhost:8000/api/service/{id} (GET)
-    *Headers* - Usar el Token Generado en el Api Generar Token\
+  
+    *Headers* - Usar el Token Generado en el Api Generar Token
+  
         {
             "Authorization": (*token*) 
         }
+  
     *Parametros* - Identificadores
+  
         id: (Identificador de registro en la tabla servicios)
+  
     *Datos* - No aplica
+  
     *Respuesta* - Formato de Tipo JSON, sistema Devuelve la sigueinte estructura.
+  
         {
             "id": 1,
             "name": "Mantemiento",
@@ -135,19 +162,27 @@ La informacion va a ir almacenada segun la tabla en la que corresponda.
         }
 
 - **Actualizar Servicio** - http://localhost:8000/api/service/{id} (PUT)
-    *Headers* - Usar el Token Generado en el Api Generar Token\
+  
+    *Headers* - Usar el Token Generado en el Api Generar Token
+  
         {
             "Authorization": (*token*) 
         }
+  
     *Parametros* - Identificadores
+  
         id: (Identificador de registro en la tabla servicios)
+  
     *Datos* - Formato de Tipo JSON, utilizar la siguiente estructura. Todos los campos son obligatorios
+  
         {
             "name": "Mantemiento de Equipos Ultima Generacion",
             "sku" : "0987654321",
             "price": 35.00
         }
+  
     *Respuesta* - Formato de Tipo JSON, sistema Devuelve la sigueinte estructura.
+  
         {
             "id": 1,
             "name": "Mantemiento de Equipos Ultima Generacion",
@@ -161,26 +196,39 @@ La informacion va a ir almacenada segun la tabla en la que corresponda.
         }
 
 - **Eliminar Servicio** - http://localhost:8000/api/service/{id} (DELETE)
-    *Headers* - Usar el Token Generado en el Api Generar Token\
+  
+    *Headers* - Usar el Token Generado en el Api Generar Token
+  
         {
             "Authorization": (*token*) 
         }
+  
     *Parametros* - Identificadores
+  
         id: (Identificador de registro en la tabla servicios)
+  
     *Datos* - No Aplica
+  
     *Respuesta* - Eliminado Logico el registro se mantiene, el producto cambia a Estado D
+  
         "Item Eliminado"
 
 # CRUD A SOFTWARE
 
 - **Listar Software** - http://localhost:8000/api/software (GET)
-    *Headers* - Usar el Token Generado en el Api Generar Token\
+  
+    *Headers* - Usar el Token Generado en el Api Generar Token
+  
         {
             "Authorization": (*token*) 
         }
+  
     *Parametros* - No Aplica
+  
     *Datos* - No Aplica
+  
     *Respuesta* - Formato de Tipo JSON, sistema Devuelve la sigueinte estructura.
+  
         [
             {
                 "id": 1,
@@ -213,19 +261,26 @@ La informacion va a ir almacenada segun la tabla en la que corresponda.
         ]
 
 - **Crear Software** - http://localhost:8000/api/software (POST)
-    *Headers* - Usar el Token Generado en el Api Generar Token\
+
+    *Headers* - Usar el Token Generado en el Api Generar Token
+  
         {
             "Authorization": (*token*) 
         }
+  
     *Parametros* - No Aplica
+  
     *Datos* - Formato de Tipo JSON, utilizar la siguiente estructura. Todos los campos son Obligatorios
+  
         {
             "name": "Camtasia",
             "sku" : "abcdefghij",
             "system": "Windows",
             "price": 25.00
         }
+  
     *Respuesta* - Formato de Tipo JSON, sistema Devuelve la sigueinte estructura.
+  
         {
             "name": "Camtasia",
             "sku": "abcdefghij",
@@ -241,14 +296,21 @@ La informacion va a ir almacenada segun la tabla en la que corresponda.
         }
 
 - **Visualizar Software** - http://localhost:8000/api/software/{id} (GET)
+  
     *Headers* - Usar el Token Generado en el Api Generar Token
+  
         {
             "Authorization": (*token*) 
         }
+  
     *Parametros* - Identificadores
+  
         id: (Identificador de registro en la tabla software)
+  
     *Datos* - No aplica
+  
     *Respuesta* - Formato de Tipo JSON, sistema Devuelve la sigueinte estructura.
+  
         {
             "id": 121,
             "name": "Camtasia",
@@ -265,20 +327,28 @@ La informacion va a ir almacenada segun la tabla en la que corresponda.
         }
 
 - **Actualizar Software** - http://localhost:8000/api/software/{id} (PUT)
-    *Headers* - Usar el Token Generado en el Api Generar Token\
+  
+    *Headers* - Usar el Token Generado en el Api Generar Token
+  
         {
             "Authorization": (*token*) 
         }
+  
     *Parametros* - Identificadores
+  
         id: (Identificador de registro en la tabla software)
+  
     *Datos* - Formato de Tipo JSON, utilizar la siguiente estructura. Todos los campos son obligatorios
+  
         {
             "name": "Antivirus ESET",
             "sku" : "0987654321",
             "system": "Windows",
             "price": 35.00
         }
+  
     *Respuesta* - Formato de Tipo JSON, sistema Devuelve la sigueinte estructura.
+  
         {
             "id": 1,
             "name": "Antivirus ESET",
@@ -295,14 +365,21 @@ La informacion va a ir almacenada segun la tabla en la que corresponda.
         }
 
 - **Eliminar Software** - http://localhost:8000/api/software/{id} (DELETE)
-    *Headers* - Usar el Token Generado en el Api Generar Token\
+  
+    *Headers* - Usar el Token Generado en el Api Generar Token
+  
         {
             "Authorization": (*token*) 
         }
+  
     *Parametros* - Identificadores
+  
         id: (Identificador de registro en la tabla software)
+  
     *Datos* - No Aplica
+  
     *Respuesta* - Eliminado Logico el registro se mantiene, el producto cambia a Estado D
+  
         "Item Eliminado"
 
 
