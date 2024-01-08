@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
-    public function generateToken(Request $request)
+    public function getToken(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',

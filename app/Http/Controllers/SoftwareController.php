@@ -43,16 +43,18 @@ class SoftwareController extends Controller
                 'name' => 'required|string|max:255',
                 'system' => 'required|string|max:255',
                 'sku' => 'required|unique:Software,sku|max:10',
-                'price' => 'required|float',
+                'price' => 'required|numeric',
             ]);
 
             return response()->json(Software::create([
                 'name' => $request->get('name'),
                 'sku' => $request->get('sku'),
+                'system_operative' => $request->get('system'),
                 'price' => $request->get('price'),
                 'status' => 'A',
                 'created_by' => $user->name,
-                'license' => Str::random(100)
+                'license' => Str::random(100),
+                'stock' => 1
             ]), 201);
         } else {
             return response('Usuario No Autenticado', 401);
@@ -69,13 +71,14 @@ class SoftwareController extends Controller
                 'name' => 'required|string|max:255',
                 'system' => 'required|string|max:255',
                 'sku' => 'required|unique:Software,sku|max:10',
-                'price' => 'required|float',
+                'price' => 'required|numeric',
             ]);
 
             $software = Software::findOrFail($id);
             $software->update([
                 'name' => $request->get('name'),
                 'sku' => $request->get('sku'),
+                'system_operative' => $request->get('system'),
                 'price' => $request->get('price'),
                 'updated_by' => $user->name,
             ]);

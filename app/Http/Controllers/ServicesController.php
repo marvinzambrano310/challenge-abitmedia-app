@@ -40,9 +40,8 @@ class ServicesController extends Controller
         if (isset($user)) {
             $request->validate([
                 'name' => 'required|string|max:255',
-                'system' => 'required|string|max:255',
                 'sku' => 'required|unique:services,sku|max:10',
-                'price' => 'required|float',
+                'price' => 'required|numeric',
             ]);
 
             return response()->json(Services::create([
@@ -65,9 +64,8 @@ class ServicesController extends Controller
         if (isset($user)) {
             $request->validate([
                 'name' => 'required|string|max:255',
-                'system' => 'required|string|max:255',
                 'sku' => 'required|unique:services,sku|max:10',
-                'price' => 'required|float',
+                'price' => 'required|numeric',
             ]);
 
             $service = Services::findOrFail($id);
